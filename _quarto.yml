@@ -1,0 +1,10 @@
+project:
+  title: "taxollens-quarto"
+  output-dir: _output
+  type: default
+
+
+format:
+  quarto-tacl-pdf:
+    default: true
+    keep-tex: true

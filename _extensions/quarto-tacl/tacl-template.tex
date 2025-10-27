@@ -1,0 +1,59 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% tacl-template.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% File tacl2021v1.tex
+% Dec. 15, 2021
+
+% The English content of this file was modified from various *ACL instructions
+% by Lillian Lee and Kristina Toutanova
+%
+% LaTeXery is mostly all adapted from acl2018.sty.
+
+$doc-class.tex()$
+
+
+\usepackage{times,latexsym}
+\usepackage{url}
+\usepackage[T1]{fontenc}
+
+$_tacl-preamble.tex()$
+
+
+$title.tex()$
+
+\begin{document}
+
+$before-body.tex()$
+
+$if(tacl-options)$
+Has Tacl Options
+$if(tacl-options.accepted)$
+Accepted
+$else$
+Not Accepted
+$endif$
+$endif$
+
+$body$
+
+
+
+$after-body.tex()$
+
+$biblio.tex()$
+
+
+% \iftaclpubformat
+
+% \onecolumn
+
+% \appendix
+
+% \section{Author/Affiliation Options as set forth by MIT Press}
+
+  
+% \fi
+
+\end{document}
+
+

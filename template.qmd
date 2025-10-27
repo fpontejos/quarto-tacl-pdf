@@ -1,0 +1,196 @@
+---
+title: TACL Template
+
+bibliography: tacl2021.bib
+
+format: quarto-tacl-pdf
+
+abstract: |
+  This document contains the formatting requirements for TACL \taclpapers. 
+  These formatting rules take effect for all \taclpapers received 
+  from September 2, 2018 onwards.
+  
+tacl-options:
+    # package: 
+        # - acceptedWithA
+        # - copyedit
+    styleone: true
+    # styleone: false
+    titlebox: 5cm
+author:
+  - name: Author Name 1
+    email: author1@example.com
+    orcid: string
+    note: string
+    acknowledgements: string
+    attributes:
+      corresponding: true
+      equal-contributor: true
+    affiliations: 
+      - ref: aff1
+    symbol: \dagger
+
+  - name: Author Name 2
+    email: author2@example.com
+    orcid: string
+    note: string
+    acknowledgements: string
+    attributes:
+      equal-contributor: true
+    affiliations: 
+      - ref: aff1
+    symbol: \diamond
+
+affiliations:
+    - id: aff1
+      name: Template Affiliation1
+      address: Aff1 Address Line 1
+      city: City
+      country: Country, Address Line 2
+
+date: last-modified
+
+---
+
+# Courtesy warning: Common violations of \taclpaper rules that have resulted in desk rejects
+
+
+1. Violation: wrong paper format. 
+  *As of the September 2018 submission round and beyond, 
+  TACL requires A4 format. This is a change from the prior paper size.*
+
+2. Violation: main document text smaller than 11pt, or table or figure
+  captions in a font smaller than 10pt. See Table ref tab:font-table.
+
+3. Violation: fewer than seven pages of content or more than ten pages of
+  content, *including* any appendices. (Exceptions are made for
+  re-submissions where a TACL Action Editor explicitly granted a set number of
+  extra pages to address reviewer comments.) See
+  Section ref sec:length.
+
+4. Violation: Author-identifying information in the document content or
+  embedded in the file itself.
+
+    - Advice: Make sure the submitted PDF does *not* embed within it
+      any author info: check the document properties before submitting.
+      Useful tools include Adobe Reader and `pdfinfo`.
+
+    - Advice: Check that no URLs (or corresponding websites) inadvertently
+      disclose any author information. If software or data is to be distributed,
+      mention so in *anonymized* fashion.
+
+    -  Advice: Make sure that author names have been omitted
+      from the author block. (It's OK to include some sort of anonymous
+      placeholder.)
+
+    -  Advice: Do not include acknowledgments in a submission.
+
+    -  Advice: While citation of one's own relevant prior work is as
+      encouraged as the citation of any other relevant prior work,
+      self-citations should be made in the third, not first, person.
+      No citations should be attributed to ``anonymous'' or the like.
+      See Section ref sec:self-cite. 
+
+# General instructions
+
+Submissions that do not comply with this document’s instructions risk rejection without review. 
+
+Submissions should consist of a Portable Document Format (PDF) file formatted for A4 paper.[^1] All necessary fonts should be included in the file.
+
+[^1]: Prior to the September 2018 submission round, a different paper size was used.
+
+
+# \LaTeX\ files
+
+\LaTeX\ files compliant with these instructions are available at the
+Author Guidelines section of the TACL website, \href{https://www.transacl.org/}
+{https://www.transacl.org}.[^2] Use of the TACL \LaTeX\ files is highly recommended: *MIT Press requires authors to supply \LaTeX\ source files as part of the publication process*; and use of the recommended \LaTeX\ files makes conversion to the required camera-ready format simple.
+
+[^2]: Last accessed \dateOfLastUpdate.
+
+
+<!-- --------------------------------------- -->
+## Workarounds for problems with the `hyperref` package
+
+The provided files use the `hyperref` package by default. The TACL files employ the `hyperref` package to make clickable links for URLs and other references, and to make titles of bibliographic items into clickable links to their DOIs in the generated PDF.[^3]
+
+However, it is known that citations or URLs that cross pages can trigger the compilation error `"\pdfendlink ended up in different nesting level than \pdfstartlink"`
+
+[^3]: Indeed, for some versions of `acl_natbib.sty`, DOIs and URLs are not printed out or included in the bibliography in any form if the `hyperref` package is not used.
+
+In such cases, you may temporarily disable the `hyperref` package and then compile to locate the offending portion of the TeX file; edit to avoid a page break within a link[^4]; and then re-enable the `hyperref` package.
+
+[^4]: If the problematic link is part of a reference in the bibliography and you do not wish to directly edit the corresponding .bbl file, a heavy-handed approach is to add the line `\interlinepenalty=10000` just after the line `\sloppy\clubpenalty4000\widowpenalty4000` in the `"\def\thebibliography"` portion of the file tacl2021v1.sty. This penalty means that \LaTeX\ will not allow individual bibliography items to cross a page break.
+
+
+To disable it, add nohyperref in the square brackets to pass that option to the
+TACL package. For example, change `\usepackage[]{tacl2021v1}` to
+`\usepackage[nohyperref]{tacl2021v1}`.
+
+
+<!-- --------------------------------------- -->
+
+# Length Limits
+
+Submissions may consist of seven to ten (7-10) A4
+format (not letter) pages of content.
+
+The page limit includes any appendices. However, references do not count toward the page limit.
+
+Exception: Revisions of (b) or (c) submissions may have been allowed additional pages of content by the prior Action Editor, as specified in their decision letter.
+
+# Fonts and Text Size
+
+Adobe’s Times Roman font should be used. In \LaTeX2e{} this is accomplished by putting `\usepackage{times,latexsym}+` in the preamble[^5].
+
+[^5]: Should Times Roman be unavailable to you, use Computer Modern Roman(\LaTeX2e{}'s default).  Note that the latter is about 10\% less dense than Adobe's Times Roman font.
+
+Font size requirements are listed in Table \ref{tbl-fontreqs}. In addition to those requirements, the content of figures, tables, equations, etc. must be of reasonable size and readability.
+
+
+| **Type of Text**  | **Size**  | **Style**    |
+|:----------------- | ------:   | -----|
+| Paper title       | 15 pt     | bold |
+| Abstract header   | 12 pt     | bold |
+| Abstract text     | 10 pt     |      |
+| Section titles    | 12 pt     | bold |
+| Document text     | 11 pt     |      |
+| Captions          | 10 pt     |      |
+| Footnotes         |  9 pt     |      | 
+
+: Font requirements \label{tbl-fontreqs}
+
+# Page Layout
+
+The margin dimensions for a page in A4 format (21 cm $\times$ 29.7 cm) are given
+in Table \ref{tbl-margins}.  Start the content of all pages directly under
+the top margin.
+
+| Margin                  | Length    |
+| ----------------------- | ------:   |
+| Left and right margins: |  2.5 cm   |
+| Top margin:             |  2.5 cm   |  
+| Bottom margin:          |  2.5 cm   |
+| Column width:           |  7.7 cm   | 
+| Column height:          | 24.7 cm   |
+| Gap between columns:    |  0.6 cm   |
+
+: Margin requirements \label{tbl-margins}
+
+\Taclpapers must be in two-column format.
+Allowed exceptions to the two-column format are the title, which must be centered at the top of the first page;
+
+Should the pages be numbered?  Yes, for submissions (to facilitate review); but
+no, for camera-readies (page numbers will be added at publication time).
+
+\Taclpapers should be single-spaced. But, *an additional double-spaced version must also be provided, together with the single-spaced version, for the use of the copy-editors.*  
+
+Place figures and tables in the paper near where they are first discussed. Note that MIT Press disallows figures and tables on the first page.
+
+Provide a caption for every illustration. Number each one sequentially in the form: "Figure 1: Caption of the Figure." or "Table 1: Caption of the Table."
+
+Authors should ensure that tables and figures do not rely solely on color to convey critical distinctions and are, in general, accessible to the color-blind.
+
+# References
+
+This is an example of a citation: @GOODMAN2001403.
